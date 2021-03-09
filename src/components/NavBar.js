@@ -24,6 +24,7 @@ const NavBar = () => {
               color="red"
               size="1.5em"
             />
+            <Link to="/airline/:airlineId">Admin Page</Link>
           </>
         ) : (
           <>

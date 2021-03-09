@@ -7,6 +7,7 @@ const FlightList = ({ flights }) => {
   ));
   console.log(flightList);
   return (
+    
     <div className="container">
       <div>{flightList}</div>
     </div>

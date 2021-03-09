@@ -23,3 +23,40 @@ export const Description = styled.h3`
   text-align: center;
   margin-top: 50px;
 `;
+
+export const Form = styled.form`
+margin:50px;
+display: inlin-block;
+width: 50%;
+justify-items: center;
+
+`;
+export const FormItem = styled.div`
+margin:10px;
+
+`;
+
+export const FormTitle = styled.h4` 
+display: block;
+margin:80px;
+width: 50%;
+justify-items: center;
+
+`;
+
+export const Button = styled.button` 
+display: block;
+margin:15px;
+width: 50%;
+justify-items: center;
+
+`;
+
+export const FlightCard = styled.div` 
+display: block;
+margin-left:100px;
+margin-top:35px;
+width: 50%;
+justify-items: center;
+
+`;

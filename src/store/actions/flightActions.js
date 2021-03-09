@@ -8,6 +8,7 @@ import * as types from "./types";
 export const fetchFlights = () => async (dispatch) => {
   try {
     const res = await instance.get("/flights");
+    console.log(res.data);
     dispatch({
       type: types.FETCH_FLIGHT,
       payload: res.data,
@@ -21,9 +22,10 @@ export const fetchFlights = () => async (dispatch) => {
 
 export const addFlight = (newFlight) => async (dispatch) => {
   try {
+    console.log("heloo")
     const formData = new FormData();
     for (const key in newFlight) formData.append(key, newFlight[key]);
-    const res = await instance.post(`/:airlineSlug/${newFlight.Id}`, formData);
+    const res = await instance.post(`/airlines/${newFlight.airlineId}/flights`, formData);
     dispatch({
       type: types.ADD_FLIGHT,
       payload: { newFlight: res.data },
