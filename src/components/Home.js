@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+// import { Link } from "react-router-dom";
+// import { useSelector } from "react-redux";
 //Styling
-import {Description} from "../styles";
+import { Description } from "../styles";
 
 const Home = () => {
-  const user = useSelector((state) => state.authReducer.user);
+  // const user = useSelector((state) => state.authReducer.user);
 
   return (
     <div>
-        <Description>DISCOVER THE INCREDIBLE PLACES AROUND THE GLOBE</Description>
+      <Description>DISCOVER THE INCREDIBLE PLACES AROUND THE GLOBE</Description>
     </div>
   );
 };

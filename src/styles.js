@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
+// import { Link, NavLink } from "react-router-dom";
 
 export const NavStyled = styled.nav`
   background-color: #dae1e3;
-  
 `;
 
 export const AuthButtonStyled = styled.button`
@@ -22,5 +21,5 @@ export const UsernameStyled = styled.p`
 
 export const Description = styled.h3`
   text-align: center;
-  margin-top:50px;
+  margin-top: 50px;
 `;
