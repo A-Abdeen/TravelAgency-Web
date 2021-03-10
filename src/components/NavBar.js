@@ -8,8 +8,14 @@ import { signout } from "../store/actions/authActions";
 import { AuthButtonStyled, UsernameStyled, NavStyled } from "../styles";
 
 const NavBar = () => {
-  const user = useSelector((state) => state.authReducer.user);
   const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.authReducer.user);
+
+  const airline = useSelector((state) => state.airlineReducer.airlines);
+  let foundAirline;
+  if (user)
+    foundAirline = airline.find((airline) => user.id === airline.adminId);
 
   return (
     <NavStyled className="navbar navbar-expand">
@@ -18,12 +24,17 @@ const NavBar = () => {
       <div className="navbar-nav ml-auto">
         {user ? (
           <>
-            <UsernameStyled>Hello, {user.username}! </UsernameStyled>
+            <UsernameStyled>Hello, {user.username}!</UsernameStyled>
             <FiLogOut
               onClick={() => dispatch(signout())}
               color="red"
               size="1.5em"
             />
+            {user.userType === "admin" ? (
+              <Link to={`/airlines/${foundAirline?.id}/`}>Admin Page </Link>
+            ) : (
+              <Link to="/:userId/"> User Profile</Link>
+            )}
           </>
         ) : (
           <>
@@ -35,13 +46,6 @@ const NavBar = () => {
             </Link>
           </>
         )}
-        {/* <>
-          {user.userType === "admin" ? (
-            <Link to="/:airlineId/">Admin Page</Link>
-          ) : (
-            "Blah"
-          )}
-        </> */}
       </div>
     </NavStyled>
   );
