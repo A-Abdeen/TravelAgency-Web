@@ -28,7 +28,7 @@ export const signin = (userData, history) => {
     try {
       const res = await instance.post("/signin", userData);
       dispatch(setUser(res.data.token));
-      history.replace("/:userSlug");
+      history.replace("/");
     } catch (error) {
       console.log(error);
     }

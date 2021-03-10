@@ -24,7 +24,6 @@ const NavBar = () => {
               color="red"
               size="1.5em"
             />
-            <Link to="/airline/:airlineId">Admin Page</Link>
           </>
         ) : (
           <>
@@ -36,6 +35,13 @@ const NavBar = () => {
             </Link>
           </>
         )}
+        {/* <>
+          {user.userType === "admin" ? (
+            <Link to="/:airlineId/">Admin Page</Link>
+          ) : (
+            "Blah"
+          )}
+        </> */}
       </div>
     </NavStyled>
   );
