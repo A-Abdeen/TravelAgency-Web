@@ -8,7 +8,7 @@ const Airline = () => {
   return (
     <div>
       <Link to={`/airlines/${airline.id}/flights/new`}>Add Flight</Link>
-      {airline}
+      {/* {airline} */}
     </div>
   );
 };

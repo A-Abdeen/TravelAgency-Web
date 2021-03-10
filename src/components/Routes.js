@@ -14,12 +14,10 @@ const Routes = () => {
 
   return (
     <Switch>
-      <Route path="/airlines/:airlineId/flights">
+      <Route path="/airlines">
         <Airline />
       </Route>
-      <Route
-        path={["/airlines/:airlineId/flights/new", "/flights/:flightId/edit"]}
-      >
+      <Route path={["/flights/new", "/flights/:flightId/edit"]}>
         <FlightForm />
       </Route>
       <Route path="/flights">
