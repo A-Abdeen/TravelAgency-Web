@@ -1,34 +1,29 @@
 // React-Router
 import { Route, Switch } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 // Components
 import Home from "./Home";
 import Signup from "./authentications/Signup";
 import Signin from "./authentications/Signin";
 import FlightList from "./FlightList";
-import FlightForm from "./forms/FlightForm"
-import Airline from "./Airline"
-import { fetchFlights } from "../store/actions/flightActions";
+import FlightForm from "./forms/FlightForm";
+import Airline from "./Airline";
 
-
-function Routes() {
-  const _flights = useSelector((state) => state.flightReducer.flights);
-  console.log(_flights);
-  console.log(useSelector((state) => state.flightReducer.flights));
-   const dispatch = useDispatch();
-  
-   console.log(dispatch(fetchFlights()));
+const Routes = () => {
+  const flights = useSelector((state) => state.flightReducer.flights);
 
   return (
     <Switch>
-      <Route path="/airline/:airlineId">
+      <Route path="/airlines/:airlineId/flights">
         <Airline />
       </Route>
-      <Route path={["/airlines/:airlineId/flights/new", "/flights/:flightId/edit"]}>
+      <Route
+        path={["/airlines/:airlineId/flights/new", "/flights/:flightId/edit"]}
+      >
         <FlightForm />
       </Route>
       <Route path="/flights">
-        <FlightList flights={_flights} />
+        <FlightList flights={flights} />
       </Route>
       <Route path="/signin">
         <Signin />
@@ -41,6 +36,6 @@ function Routes() {
       </Route>
     </Switch>
   );
-}
+};
 
 export default Routes;

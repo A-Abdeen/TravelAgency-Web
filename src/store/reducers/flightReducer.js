@@ -11,7 +11,7 @@ const flightReducer = (state = initialState, action) => {
     case types.FETCH_FLIGHT:
       return {
         ...state,
-        flights: action.payload.flights,
+        flights: action.payload,
         loading: false,
       };
     //------------------------------ADDING
