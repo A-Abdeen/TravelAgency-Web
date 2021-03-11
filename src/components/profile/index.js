@@ -1,26 +1,22 @@
-import { useSelector, useDispatch } from "react-redux";
-import {useState} from "react";
-import { updatedProfile } from "../../store/actions/authActions";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import UpdateProfile from "./UpdateProfile";
 
 const Profile = () => {
-  const user = useSelector((state) => state.authReducer.user);
-  const [profile, setProfile] = useState({
-      name:"",
-      email:"",
-    }
-  );
-
-  const dispatch = useDispatch();
+  const [edit, setEdit] = useState(false);
+  const _user = useSelector((state) => state.authReducer.user);
 
   return (
-    <div>
-        <h4>User Profile</h4>
-        <p>{user.id}</p>
-        <p>{user.username}</p>
-        <p>{user.email}</p>
-        <button></button>
-
-
+    <div className="container">
+      {/* <h4>User Profile</h4>
+      <p>{_user.id}</p>
+      <p>{_user.username}</p>
+      <p>{_user.email}</p> */}
+      <UpdateProfile />
+      {/* <Link to={`profile/${_user.id}/edit`}>
+        <button className="btn btn-primary">Edit Profile</button>
+      </Link> */}
     </div>
   );
 };
