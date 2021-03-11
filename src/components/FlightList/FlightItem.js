@@ -17,7 +17,7 @@ const FlightItem = ({ flight }) => {
       <p>EconomySeats: {flight.economySeats}</p>
       <p>ArrivalDate: {flight.arrivalDate}</p>
       <p>DepartureDate: {flight.departureDate}</p>
-      <UpdateButton slug={flight.id} />
+      <UpdateButton flight={flight} />
       </div>
     </FlightCard>
   );

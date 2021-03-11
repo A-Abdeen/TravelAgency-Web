@@ -1,12 +1,10 @@
 import { applyMiddleware, compose, createStore } from "redux";
 import rootReducer from "./reducers";
 import thunk from "redux-thunk";
-import { checkForToken } from "./actions/authActions";
+import { checkForToken, fetchProfile } from "./actions/authActions";
 import { fetchFlights } from "./actions/flightActions";
-import {
-  // fetchAirlineFlight,
-  fetchAirlines,
-} from "./actions/airlineActions";
+import {fetchAirlines} from "./actions/airlineActions";
+import {fetchOriginLocation, fetchDestinationLocation } from "./actions/locationActions";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -18,6 +16,8 @@ const store = createStore(
 store.dispatch(fetchFlights());
 store.dispatch(checkForToken());
 store.dispatch(fetchAirlines());
-// store.dispatch(fetchAirlineFlight());
+store.dispatch(fetchOriginLocation());
+store.dispatch(fetchDestinationLocation());
+store.dispatch(fetchProfile());
 
 export default store;
