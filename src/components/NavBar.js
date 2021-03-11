@@ -33,7 +33,7 @@ const NavBar = () => {
             {user.userType === "admin" ? (
               <Link to={`/airlines/${foundAirline?.id}/`}>Admin Page </Link>
             ) : (
-              <Link to="/profile"> User Profile</Link>
+              <Link to={`/profile/${user?.id}`}> User Profile</Link>
             )}
           </>
         ) : (

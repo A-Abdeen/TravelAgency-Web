@@ -9410,6 +9410,11 @@ react-error-overlay@^6.0.9:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
 
+react-form-editables@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-form-editables/-/react-form-editables-1.1.2.tgz#355f0f19b7ab5d7d05cc8f52a0bcb57e3e586f7e"
+  integrity sha512-lyW35QqKqG9TffK6gy8H8KfhU7OArm5bnMIa7V2FMs+a1+KxiZF6eLzdr51KuDEwGAKVkCeKEgkBRda9VkOh3A==
+
 react-icons@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.2.0.tgz#6dda80c8a8f338ff96a1851424d63083282630d0"

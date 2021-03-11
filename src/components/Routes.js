@@ -8,14 +8,19 @@ import Signin from "./authentications/Signin";
 import FlightList from "./FlightList";
 import FlightForm from "./forms/FlightForm";
 import Airline from "./Airline";
-import Profile from "./profile"
+import Profile from "./profile";
+import UpdateProfile from "./profile/UpdateProfile";
 
 const Routes = () => {
   const flights = useSelector((state) => state.flightReducer.flights);
+  const user = useSelector((state) => state.authReducer.user);
 
   return (
     <Switch>
-      <Route path="/profile">
+      <Route path="/profile/:userId/edit">
+        <UpdateProfile />
+      </Route>
+      <Route path="/profile/">
         <Profile />
       </Route>
       <Route path="/airlines">
