@@ -46,7 +46,7 @@ justify-items: center;
 
 export const Button = styled.button` 
 display: block;
-margin:15px;
+margin:25px;
 width: 50%;
 justify-items: center;
 

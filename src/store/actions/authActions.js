@@ -56,3 +56,30 @@ export const checkForToken = () => (dispatch) => {
     }
   }
 };
+
+export const fetchProfile = () => async (dispatch) => {
+  try {
+    const res = await instance.get("/userView");
+    dispatch({
+      type: types.SET_USER,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const updateUser = (updatedProfile) => async (dispatch) => {
+  try {
+    const res = await instance.put(
+      "/userUpdate",
+      updatedProfile
+    );
+    dispatch({
+      type: types.SET_USER,
+      payload: { updatedProfile: res.data },
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};

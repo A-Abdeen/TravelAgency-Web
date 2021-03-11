@@ -13,17 +13,18 @@ const FlightForm = () => {
   const history = useHistory();
   const { flightId, airlineId } = useParams();
   const foundFlight = useSelector((state) =>
-    state.flightReducer.flights.find((flight) => flight.id === flightId)
+    state.flightReducer.flights.find((flight) => flight.id === +flightId)
   );
 
-  console.log(useSelector((state) => state.flightReducer.flights));
-  console.log(foundFlight);
-
   const [flight, setFlight] = useState(
-    foundFlight || {
+    foundFlight ?? {
       airlineId: airlineId,
+      originId:"",
+      destinationId:"",
       departureDate: "",
       arrivalDate: "",
+      departureTime:"",
+      arrivalTime:"",
       economySeats: 0,
       economyPrice: 0,
       businessSeats: 0,
@@ -41,14 +42,51 @@ const FlightForm = () => {
     history.push("/flights");
   };
 
+  const origin = useSelector((state) => state.locationReducer.origins);
+  const destination = useSelector((state) => state.locationReducer.destinations);
+
+  const originList = origin.map((origin)=>
+   <option value={`${origin.id}`}>{origin.airportName}</option>);
+
+   const destinationList = destination.map((destination)=>
+   <option value={`${destination.id}`}>{destination.airportName}</option>);
+
+
   return (
     <div>
-      <FormTitle>{foundFlight ? "Edit" : "Add"} Flight</FormTitle>
+      <FormTitle>{foundFlight ? "Edit":"Add"} Flight</FormTitle>
+
       <Form className="row g-3" onSubmit={handleSubmit}>
+      <FormItem className="col-auto">
+        <label className="form-label">From</label>
+        <select 
+        id="originId" 
+        name="originId" 
+        onChange={handleChange} 
+        className="form-control" 
+        value={flight.originId}>
+        <option value="">location</option>
+        {originList}
+        </select>
+        </FormItem>
+
         <FormItem className="col-auto">
+        <label className="form-label">To</label>
+        <select 
+        id="destinationId" 
+        name="destinationId" 
+        onChange={handleChange} 
+        className="form-control" 
+        value={flight.destinationId}>
+        <option value="">location</option>
+        {destinationList}
+        </select>
+        </FormItem>
+
+        <FormItem className="col-auto">
+        <label className="form-label">Departure Date</label>
           <input
-            placeholder="Departure Date"
-            type="datetime-local"
+            type="date"
             value={flight.departureDate}
             onChange={handleChange}
             name="departureDate"
@@ -56,9 +94,9 @@ const FlightForm = () => {
           />
         </FormItem>
         <FormItem className="col-auto">
+        <label className="form-label">Arrival Date</label>
           <input
-            placeholder="Arrival Date"
-            type="datetime-local"
+            type="date"
             value={flight.arrivalDate}
             onChange={handleChange}
             name="arrivalDate"
@@ -66,8 +104,28 @@ const FlightForm = () => {
           />
         </FormItem>
         <FormItem className="col-auto">
+        <label className="form-label">DepartureTime</label>
           <input
-            placeholder="Economy Seats"
+            type="time"
+            value={flight.departureTime}
+            onChange={handleChange}
+            name="departureTime"
+            className="form-control"
+          />
+        </FormItem>
+        <FormItem className="col-auto">
+        <label className="form-label">Arrival Time</label>
+          <input
+            type="time"
+            value={flight.arrivalTime}
+            onChange={handleChange}
+            name="arrivalTime"
+            className="form-control"
+          />
+        </FormItem>
+        <FormItem className="col-auto">
+        <label className="form-label">Economy Seats</label>
+          <input
             type="number"
             value={flight.economySeats}
             onChange={handleChange}
@@ -76,8 +134,8 @@ const FlightForm = () => {
           />
         </FormItem>
         <FormItem className="col-auto">
+        <label className="form-label">Economy Price</label>
           <input
-            placeholder="Economy Price"
             type="number"
             value={flight.economyPrice}
             onChange={handleChange}
@@ -85,26 +143,26 @@ const FlightForm = () => {
             className="form-control"
           />
         </FormItem>
-        <div className="col-auto">
+        <FormItem className="col-auto">
+        <label className="form-label">Business Seats</label>
           <input
-            placeholder="Business Seats"
             type="number"
             value={flight.businessSeats}
             onChange={handleChange}
             name="businessSeats"
             className="form-control"
           />
-        </div>
-        <div className="col-auto">
+        </FormItem>
+        <FormItem className="col-auto">
+        <label className="form-label">Business Price</label>
           <input
-            placeholder="Business Price"
             type="number"
             value={flight.businessPrice}
             onChange={handleChange}
             name="businessPrice"
             className="form-control"
           />
-        </div>
+        </FormItem>
         <Button type="submit" className="btn btn-info float-right">
           {foundFlight ? "Edit" : "Add"}
         </Button>

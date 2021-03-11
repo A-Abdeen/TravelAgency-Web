@@ -7,12 +7,13 @@ import * as types from "./types";
 //------------------------------FETCHING FROM BACKEND
 export const fetchFlights = () => async (dispatch) => {
   try {
+    console.log("hello");
     const res = await instance.get("/flights");
-    console.log(res.data);
     dispatch({
       type: types.FETCH_FLIGHT,
       payload: res.data,
     });
+    console.log("helloo");
   } catch (err) {
     console.error(err);
   }
@@ -22,10 +23,9 @@ export const fetchFlights = () => async (dispatch) => {
 
 export const addFlight = (newFlight) => async (dispatch) => {
   try {
-    console.log("heloo")
-    const formData = new FormData();
-    for (const key in newFlight) formData.append(key, newFlight[key]);
-    const res = await instance.post(`/airlines/${newFlight.airlineId}/flights`, formData);
+    console.log(newFlight);
+    const res = await instance.post(`/airlines/${newFlight.airlineId}/flights`, newFlight);
+    console.log(res);
     dispatch({
       type: types.ADD_FLIGHT,
       payload: { newFlight: res.data },
@@ -38,11 +38,9 @@ export const addFlight = (newFlight) => async (dispatch) => {
 //------------------------------UPDATING
 export const updateFlight = (updatedFlight) => async (dispatch) => {
   try {
-    const formData = new FormData();
-    for (const key in updatedFlight) formData.append(key, updatedFlight[key]);
     const res = await instance.put(
-      `/:airlineSlug/${updatedFlight.id}`,
-      formData
+      `/flights/${updatedFlight.id}`,
+      updatedFlight
     );
     dispatch({
       type: types.UPDATE_FLIGHT,
