@@ -2,6 +2,7 @@ import { useState } from "react";
 import { signup } from "../../store/actions/authActions";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import {AuthForm} from "../../styles";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="container">
+    <AuthForm className="col-md-6">
       <h3>Sign up</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -69,7 +70,7 @@ const Signup = () => {
       <Link to="/signin">
         <p>Already have an Account?</p>
       </Link>
-    </div>
+    </AuthForm>
   );
 };
 
