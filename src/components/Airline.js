@@ -2,6 +2,7 @@
 import { Link, Redirect, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import FlightList from "./FlightList";
+import {AddFlight} from "../styles";
 
 const Airline = () => {
   const flights = useSelector((state) => state.flightReducer.flights);
@@ -18,7 +19,8 @@ if (!user || user.userType !== "admin"){
   console.log(airline.id);
   return (
     <div>
-      <Link to={`/flights/${foundAirline?.id}/new`}>Add Flight</Link>
+      <Link to={`/flights/${foundAirline?.id}/new`}>
+        <AddFlight type="button" className="btn btn-info float-right">Add Flight</AddFlight></Link>
       <FlightList flights={flights}/>
     </div>
   );

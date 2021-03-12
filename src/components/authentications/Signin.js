@@ -2,6 +2,7 @@ import { useState } from "react";
 import { signin } from "../../store/actions/authActions";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import {AuthForm} from "../../styles";
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Signin = () => {
   const [show, setShow] = useState("password");
 
   return (
-    <div className="container">
+    <AuthForm className="col-md-6">
       <h3>Sign in</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -49,15 +50,6 @@ const Signin = () => {
           {/* <input type="password" value="FakePSW" id="myInput" /> */}
           {/* <input type="checkbox" onclick="myFunction()" /> */}
         </div>
-        <div className="form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-            onChange={() => setShow(show === "password" ? "text" : "password")}
-          />
-          <label className="form-check-label">show password</label>
-        </div>
         <button className="btn float-right" type="submit">
           Sign in
         </button>
@@ -65,7 +57,7 @@ const Signin = () => {
       <Link to="/signup">
         <p>Create an Account?</p>
       </Link>
-    </div>
+    </AuthForm>
   );
 };
 

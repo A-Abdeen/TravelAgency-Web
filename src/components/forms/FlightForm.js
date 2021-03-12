@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 //Styling
-import { Form, FormTitle, Button, FormItem } from "../../styles";
+import { Form, FormTitle, AddFlight} from "../../styles";
 
 //Components
 import { addFlight, updateFlight } from "../../store/actions/flightActions";
@@ -56,35 +56,38 @@ const FlightForm = () => {
     <div>
       <FormTitle>{foundFlight ? "Edit":"Add"} Flight</FormTitle>
 
-      <Form className="row g-3" onSubmit={handleSubmit}>
-      <FormItem className="col-auto">
-        <label className="form-label">From</label>
+      <Form onSubmit={handleSubmit}>
+      <div className="row">
+      <div className="col-md-5">
+        <label>From</label>
         <select 
         id="originId" 
         name="originId" 
         onChange={handleChange} 
         className="form-control" 
         value={flight.originId}>
-        <option value="">location</option>
+        <option value="">airportName</option>
         {originList}
         </select>
-        </FormItem>
-
-        <FormItem className="col-auto">
-        <label className="form-label">To</label>
+        </div>
+        <div className="col-md-5">
+        <label>To</label>
         <select 
         id="destinationId" 
         name="destinationId" 
-        onChange={handleChange} 
         className="form-control" 
+        onChange={handleChange} 
         value={flight.destinationId}>
-        <option value="">location</option>
+        <option value="">airportName</option>
         {destinationList}
         </select>
-        </FormItem>
+        </div>
+        </div>
+        <div>
 
-        <FormItem className="col-auto">
-        <label className="form-label">Departure Date</label>
+        <div className="row">
+        <div className="col-md-5">
+        <label>Departure Date</label>
           <input
             type="date"
             value={flight.departureDate}
@@ -92,9 +95,9 @@ const FlightForm = () => {
             name="departureDate"
             className="form-control"
           />
-        </FormItem>
-        <FormItem className="col-auto">
-        <label className="form-label">Arrival Date</label>
+        </div>
+        <div className="col-md-5">
+        <label>Arrival Date</label>
           <input
             type="date"
             value={flight.arrivalDate}
@@ -102,9 +105,11 @@ const FlightForm = () => {
             name="arrivalDate"
             className="form-control"
           />
-        </FormItem>
-        <FormItem className="col-auto">
-        <label className="form-label">DepartureTime</label>
+        </div>
+        </div>
+        <div className="row">
+        <div className="col-md-5">
+        <label>DepartureTime</label>
           <input
             type="time"
             value={flight.departureTime}
@@ -112,9 +117,9 @@ const FlightForm = () => {
             name="departureTime"
             className="form-control"
           />
-        </FormItem>
-        <FormItem className="col-auto">
-        <label className="form-label">Arrival Time</label>
+        </div>
+        <div className="col-md-5">
+        <label>Arrival Time</label>
           <input
             type="time"
             value={flight.arrivalTime}
@@ -122,9 +127,11 @@ const FlightForm = () => {
             name="arrivalTime"
             className="form-control"
           />
-        </FormItem>
-        <FormItem className="col-auto">
-        <label className="form-label">Economy Seats</label>
+        </div>
+        </div>
+        <div className="row">
+        <div className="col-md-5">
+        <label>Economy Seats</label>
           <input
             type="number"
             value={flight.economySeats}
@@ -132,9 +139,9 @@ const FlightForm = () => {
             name="economySeats"
             className="form-control"
           />
-        </FormItem>
-        <FormItem className="col-auto">
-        <label className="form-label">Economy Price</label>
+        </div>
+        <div className="col-md-5">
+        <label>Economy Price</label>
           <input
             type="number"
             value={flight.economyPrice}
@@ -142,9 +149,11 @@ const FlightForm = () => {
             name="economyPrice"
             className="form-control"
           />
-        </FormItem>
-        <FormItem className="col-auto">
-        <label className="form-label">Business Seats</label>
+        </div>
+        </div>
+        <div className="row">
+        <div className="col-md-5">
+        <label>Business Seats</label>
           <input
             type="number"
             value={flight.businessSeats}
@@ -152,9 +161,9 @@ const FlightForm = () => {
             name="businessSeats"
             className="form-control"
           />
-        </FormItem>
-        <FormItem className="col-auto">
-        <label className="form-label">Business Price</label>
+        </div>
+        <div className="col-md-5">
+        <label>Business Price</label>
           <input
             type="number"
             value={flight.businessPrice}
@@ -162,10 +171,12 @@ const FlightForm = () => {
             name="businessPrice"
             className="form-control"
           />
-        </FormItem>
-        <Button type="submit" className="btn btn-info float-right">
+        </div>
+        </div>
+        </div>
+        <AddFlight type="submit" className="btn btn float-right">
           {foundFlight ? "Edit" : "Add"}
-        </Button>
+        </AddFlight>
       </Form>
     </div>
   );
