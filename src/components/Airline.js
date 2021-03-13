@@ -2,7 +2,7 @@
 import { Link, Redirect, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import FlightList from "./FlightList";
-import {AddFlight} from "../styles";
+import { AddFlight } from "../styles";
 
 const Airline = () => {
   const flights = useSelector((state) => state.flightReducer.flights);
@@ -11,17 +11,18 @@ const Airline = () => {
   let foundAirline;
   if (user)
     foundAirline = airline.find((airline) => user.id === airline.adminId);
-if (!user || user.userType !== "admin"){
-  return <Redirect to="/"/>
+  if (!user || user.userType !== "admin") {
+    return <Redirect to="/" />;
+  }
 
-}
-  
-  console.log(airline.id);
   return (
     <div>
       <Link to={`/flights/${foundAirline?.id}/new`}>
-        <AddFlight type="button" className="btn btn-info float-right">Add Flight</AddFlight></Link>
-      <FlightList flights={flights}/>
+        <AddFlight type="button" className="btn btn-info float-right">
+          Add Flight
+        </AddFlight>
+      </Link>
+      <FlightList flights={foundAirline.flights} />
     </div>
   );
 };

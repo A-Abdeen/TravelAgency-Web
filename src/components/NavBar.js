@@ -5,7 +5,13 @@ import { GoSignOut } from "react-icons/go";
 //Components
 import { signout } from "../store/actions/authActions";
 //Styling
-import { AuthButtonStyled, UsernameStyled, NavStyled, Logo, NavItem } from "../styles";
+import {
+  AuthButtonStyled,
+  UsernameStyled,
+  NavStyled,
+  Logo,
+  NavItem,
+} from "../styles";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -19,8 +25,11 @@ const NavBar = () => {
 
   return (
     <NavStyled className="navbar navbar-expand">
-       <Logo className="navbar-brand" to="/">
-          <img src= "https://lh3.googleusercontent.com/proxy/5fz_dxHOGNuSyVCilFpHPN63ECwfrGpbWlZaM-AJAu9y9Z-T_UnQ1R1acIRXpAmVjv0_xp4E0XncmRSK0mmF42fk9362kWYN9FxdNv0YHlmi7i1_VzSiK9JRArBYBdsNsTE" alt="Logo"/>
+      <Logo className="navbar-brand" to="/">
+        <img
+          src="https://lh3.googleusercontent.com/proxy/WHtVkDXcIlEI5scCLpb5ls7-y0ulKhf9kMaUB5Xg1k9WvOOUeKDzpp_b-xPksGLkC7k4gESObDbyxk6THgAiXnoOJ7BfSh9C5kJUBpWMyjeE3brezZgxaitun-06oetX6AM"
+          alt="Logo"
+        />
       </Logo>
 
       <h3>Pringles Travel and Torism</h3>
@@ -28,17 +37,27 @@ const NavBar = () => {
       <div className="navbar-nav ml-auto">
         {user ? (
           <>
-          {user.userType === "admin" ? (
-              <NavItem className="nav-item" to={`/airlines/${foundAirline?.id}/`}>Admin Page </NavItem>
+            {user.userType === "admin" ? (
+              <NavItem
+                className="nav-item"
+                to={`/airlines/${foundAirline?.id}/`}
+              >
+                Admin Page{" "}
+              </NavItem>
             ) : (
-              <NavItem className="nav-item" to={`/profile/${user?.id}`}> User Profile</NavItem>
+              <NavItem className="nav-item" to={`/profile/${user?.id}`}>
+                {" "}
+                User Profile
+              </NavItem>
             )}
             <UsernameStyled>Welcome, {user.username}!</UsernameStyled>
-            <GoSignOut
-              onClick={() => dispatch(signout())}
-              color="red"
-              size="1.0em"
-            />
+            <NavItem className="nav-item" to="/">
+              <GoSignOut
+                onClick={() => dispatch(signout())}
+                color="red"
+                size="1.0em"
+              />
+            </NavItem>
           </>
         ) : (
           <>
