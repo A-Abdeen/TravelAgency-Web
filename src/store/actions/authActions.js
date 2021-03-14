@@ -73,9 +73,9 @@ export const updateUser = (updatedProfile) => async (dispatch) => {
   try {
     console.log("Helloo");
     const res = await instance.put("/userUpdate", updatedProfile);
-    dispatch(setUser(res.data.token), {
+    dispatch(setUser(res.data[1]), {
       type: types.SET_USER,
-      payload: res.data,
+      payload: res.data[0],
     });
   } catch (err) {
     console.error(err);
