@@ -1,27 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { updateUser } from "../../store/actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { EditableInput } from "react-form-editables";
+import Loading from "../Loading";
 
 const Profile = () => {
+  const loading = useSelector((state) => state.airlineReducer.loading);
+  const _user = useSelector((state) => state.authReducer.user);
   const dispatch = useDispatch();
   const history = useHistory();
-  const _user = useSelector((state) => state.authReducer.user);
   const [user, setUser] = useState({
     ..._user,
     username: _user.username,
     email: _user.email,
   });
-
-  // const handleSubmit = (updatedValue) => {
-  //   setUser({ textInputValue: updatedValue });
-  // };
+  if (loading) return <Loading />;
 
   const handleSubmit = () => {
-    console.log(user);
     dispatch(updateUser(user));
-    // history.push(`/profile/${user?.id}`);
+
+    history.push("/"); //MUST AUTO RELOAD
   };
 
   return (
@@ -31,10 +30,10 @@ const Profile = () => {
         <label>Username</label>
         <EditableInput
           name="username"
-          value={user.username}
+          value={_user.username}
           type="text"
           className="form-control"
-          handleSubmit={(value) => setUser({ ...user, username: value })}
+          handleSubmit={(value) => setUser({ ..._user, username: value })}
         />
       </div>
 
@@ -42,15 +41,14 @@ const Profile = () => {
         <label>Email</label>
         <EditableInput
           name="email"
-          value={user.email}
+          value={_user.email}
           type="text"
           className="form-control"
-          //onChange={handleChange}
-          handleSubmit={(value) => setUser({ ...user, email: value })}
+          handleSubmit={(value) => setUser({ ..._user, email: value })}
         />
       </div>
       <button onClick={handleSubmit} className="btn float-right" type="submit">
-        Done
+        Update
       </button>
     </div>
   );
