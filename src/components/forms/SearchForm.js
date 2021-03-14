@@ -8,7 +8,6 @@ import {
   SearchButton,
   SearchFlight,
   SearchBox,
-  TripButton,
 } from "../../styles";
 
 const FlightSearch = () => {
@@ -27,10 +26,9 @@ const FlightSearch = () => {
       arrivalDate: "",
       departureTime: "",
       arrivalTime: "",
-      economySeats: 0,
-      economyPrice: 0,
-      businessSeats: 0,
-      businessPrice: 0,
+      class :"",
+      seats: 0,
+      
     }
   );
 
@@ -63,21 +61,25 @@ const FlightSearch = () => {
               <div className="row">
                 <div className="col-md-1">
                   <input
-                    type="button"
+                    type="radio"
                     id="oneWay"
                     name="trip"
                     value="one Way"
                     className="btn btn-danger"
                   />
+                   <label>One way</label>
+
                 </div>
                 <div className="col-md-1">
                   <input
-                    type="button"
+                    type="radio"
                     id="roundTrip"
                     name="trip"
                     value="round Trip"
                     className="btn btn-secondary"
                   />
+                <label>Round Trip</label>
+
                 </div>
               </div>
 
@@ -159,9 +161,9 @@ const FlightSearch = () => {
                         <label>Number of Passengers</label>
                         <input
                         type="number"
-                        value={flight.businessSeats}
+                        value={flight.seats}
                         onChange={handleChange}
-                        name="businessSeats"
+                        name="Seats"
                         className="form-control"
                        />
                     </div>
