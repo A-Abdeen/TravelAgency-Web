@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
-import { MdCenterFocusStrong } from "react-icons/md";
 
 export const NavStyled = styled.nav`
 background-color: #ECF0F1;
@@ -62,10 +61,6 @@ margin-top:20px;
 border: 1px solid #e6e6e6;
 justify-items: center;
 width:70%;
-
-
-
-
 `;
 
 export const FormTitle = styled.h4` 
@@ -142,8 +137,18 @@ background-color:red;
 `;
 
 export const RadioButton = styled.input`
-margin-left:0px;
+padding:10px;
 
+`;
+
+export const BForm = styled.form`
+display:inline-block;
+padding: 30px;
+margin:50px;
+margin-top:20px;
+border: 1px solid #e6e6e6;
+justify-items: center;
+width:900px;
 `;
 
 

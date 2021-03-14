@@ -27,7 +27,7 @@ const NavBar = () => {
     <NavStyled className="navbar navbar-expand">
       <Logo className="navbar-brand" to="/">
         <img
-          src="https://lh3.googleusercontent.com/proxy/WHtVkDXcIlEI5scCLpb5ls7-y0ulKhf9kMaUB5Xg1k9WvOOUeKDzpp_b-xPksGLkC7k4gESObDbyxk6THgAiXnoOJ7BfSh9C5kJUBpWMyjeE3brezZgxaitun-06oetX6AM"
+          src="https://www.pringles.com/content/dam/global/pringles/images/site/logo-pringles-v2.svg"
           alt="Logo"
         />
       </Logo>

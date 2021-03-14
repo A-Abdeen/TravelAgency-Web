@@ -10,6 +10,7 @@ import FlightForm from "./forms/FlightForm";
 import Airline from "./Airline";
 import Profile from "./profile";
 import UpdateProfile from "./profile/UpdateProfile";
+import Booking from "./forms/Booking";
 
 const Routes = () => {
   const flights = useSelector((state) => state.flightReducer.flights);
@@ -17,14 +18,17 @@ const Routes = () => {
 
   return (
     <Switch>
-      <Route path="/profile/:userId/edit">
-        <UpdateProfile />
+      <Route path="/booking">
+        <Booking/>
       </Route>
       <Route path="/profile/">
         <Profile />
       </Route>
       <Route path="/airlines">
         <Airline />
+      </Route>
+      <Route path="/profile/:userId/edit">
+        <UpdateProfile />
       </Route>
       <Route path={["/flights/:airlineId/new", "/flights/:flightId/edit"]}>
         <FlightForm />
