@@ -26,7 +26,7 @@ const Routes = () => {
       <Route path="/airlines">
         <Airline />
       </Route>
-      <Route path={["/flights/:flightId/edit", "/flights/:airlineId/new"]}>
+      <Route path={["/flights/:airlineId/new", "/flights/:flightId/edit"]}>
         <FlightForm />
       </Route>
       <Route path="/flights">
