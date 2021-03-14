@@ -71,13 +71,11 @@ export const fetchProfile = () => async (dispatch) => {
 
 export const updateUser = (updatedProfile) => async (dispatch) => {
   try {
-    const res = await instance.put(
-      "/userUpdate",
-      updatedProfile
-    );
+    console.log("Helloo");
+    const res = await instance.put("/userUpdate", updatedProfile);
     dispatch({
       type: types.SET_USER,
-      payload: { updatedProfile: res.data },
+      payload: res.data,
     });
   } catch (err) {
     console.error(err);
