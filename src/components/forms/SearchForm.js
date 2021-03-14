@@ -154,9 +154,6 @@ const FlightSearch = () => {
                    </div>
                     </div>
         
-                    <div className="col-md-3">
-                    <div className="form-group form-group-lg">
-                        <label>Number of Passengers</label>
                         <div className="col-md-3">
                     <div className="form-group form-group-lg">
                         <label>Number of Passengers</label>
@@ -167,7 +164,7 @@ const FlightSearch = () => {
                         name="businessSeats"
                         className="form-control"
                        />
-</div>
+                    </div>
                     </div>
                     </div>
                     </div>
