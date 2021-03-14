@@ -118,21 +118,22 @@ const originList = origin.map((origin)=>
                 </div>
                 </div>
                 <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-4">
                     <div className="form-group form-group-lg">
-                        <label>Passengers on Economy</label>
-                        <input
-                        type="number"
-                        value={flight.economySeats}
-                        onChange={handleChange}
-                        name="economySeats"
-                        className="form-control"
-                    />
+                    <input type="radio" id="economy" name="class" value="economy"/>
+                    <label> Economy Class</label>
                     </div>
+                    </div> 
+                    <div className="col-md-4"> 
+                     <div className="form-group form-group-lg">
+                <input type="radio" id="bussines" name="class" value="bussines"/>
+                <label for="female"> Bussines Class</label>
+                   </div>
                     </div>
-                    <div className="col-md-6">
+        
+                    <div className="col-md-3">
                     <div className="form-group form-group-lg">
-                        <label>Passengers on Business</label>
+                        <label>Number of Passengers</label>
                         <input
                         type="number"
                         value={flight.businessSeats}

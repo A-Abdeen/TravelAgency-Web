@@ -141,4 +141,9 @@ background-color:red;
 
 `;
 
+export const RadioButton = styled.input`
+margin-left:0px;
+
+`;
+
 
