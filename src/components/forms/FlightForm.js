@@ -12,9 +12,11 @@ const FlightForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { flightId, airlineId } = useParams();
+  console.log(flightId);
   const foundFlight = useSelector((state) =>
     state.flightReducer.flights.find((flight) => flight.id === +flightId)
   );
+  console.log(foundFlight);
 
   const [flight, setFlight] = useState(
     foundFlight ?? {
@@ -37,11 +39,16 @@ const FlightForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (foundFlight) dispatch(updateFlight(flight));
-    else dispatch(addFlight(flight));
-    history.push(`/airlines/${airlineId}/`);
-  };
+    if (foundFlight) {
+      dispatch(updateFlight(flight));
+      history.push(`/airlines/${flight.airlineId}/`);
+    } else {
+      dispatch(addFlight(flight));
 
+      history.push(`/airlines/${airlineId}/`);
+    }
+  };
+  console.log(airlineId);
   const origin = useSelector((state) => state.locationReducer.origins);
   const destination = useSelector(
     (state) => state.locationReducer.destinations
