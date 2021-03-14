@@ -9,7 +9,7 @@ import FlightList from "./FlightList";
 import FlightForm from "./forms/FlightForm";
 import Airline from "./Airline";
 import Profile from "./profile";
-import UpdateProfile from "./profile/UpdateProfile";
+import UpdateProfile from "./profile/index";
 
 const Routes = () => {
   const flights = useSelector((state) => state.flightReducer.flights);

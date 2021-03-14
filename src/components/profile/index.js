@@ -18,49 +18,40 @@ const Profile = () => {
   //   setUser({ textInputValue: updatedValue });
   // };
 
-  const handleChange = (event) =>
-    setUser({ ...user, [event.target.name]: event.target.value });
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = () => {
+    console.log(user);
     dispatch(updateUser(user));
-    history.push(`/profile/${user?.id}`);
+    // history.push(`/profile/${user?.id}`);
   };
 
   return (
     <div className="container">
       <h3>EDIT PROFILE</h3>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Username</label>
-          <EditableInput
-            name="username"
-            value={user.username}
-            type="text"
-            className="form-control"
-            handleSubmit={handleChange}
-          />
-        </div>
-        <button className="btn float-right" type="submit">
-          Done
-        </button>
-      </form>
+      <div className="form-group">
+        <label>Username</label>
+        <EditableInput
+          name="username"
+          value={user.username}
+          type="text"
+          className="form-control"
+          handleSubmit={(value) => setUser({ ...user, username: value })}
+        />
+      </div>
 
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Email</label>
-          <EditableInput
-            name="email"
-            value={user.email}
-            type="text"
-            className="form-control"
-            handleSubmit={handleChange}
-          />
-        </div>
-        <button className="btn float-right" type="submit">
-          Done
-        </button>
-      </form>
+      <div className="form-group">
+        <label>Email</label>
+        <EditableInput
+          name="email"
+          value={user.email}
+          type="text"
+          className="form-control"
+          //onChange={handleChange}
+          handleSubmit={(value) => setUser({ ...user, email: value })}
+        />
+      </div>
+      <button onClick={handleSubmit} className="btn float-right" type="submit">
+        Done
+      </button>
     </div>
   );
 };
