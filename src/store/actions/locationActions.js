@@ -8,7 +8,6 @@ import * as types from "./types";
 export const fetchOriginLocation = () => async (dispatch) => {
   try {
     const res = await instance.get("/origins");
-    console.log(res.data);
     dispatch({
       type: types.FETCH_ORIGIN,
       payload: res.data,
@@ -22,7 +21,6 @@ export const fetchOriginLocation = () => async (dispatch) => {
 export const fetchDestinationLocation = () => async (dispatch) => {
     try {
       const res = await instance.get("/destinations");
-      console.log(res.data);
       dispatch({
         type: types.FETCH_DESTINATION,
         payload: res.data,

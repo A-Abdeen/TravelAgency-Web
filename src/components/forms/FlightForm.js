@@ -17,7 +17,6 @@ const FlightForm = () => {
   const foundFlight = useSelector((state) =>
     state.flightReducer.flights.find((flight) => flight.id === +flightId)
   );
-  console.log(foundFlight);
 
   const [flight, setFlight] = useState(
     foundFlight ?? {
@@ -49,7 +48,6 @@ const FlightForm = () => {
       history.push(`/airlines/${airlineId}/`);
     }
   };
-  console.log(airlineId);
   const origin = useSelector((state) => state.locationReducer.origins);
   const destination = useSelector(
     (state) => state.locationReducer.destinations

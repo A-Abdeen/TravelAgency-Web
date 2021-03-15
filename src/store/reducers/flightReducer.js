@@ -34,9 +34,10 @@ const flightReducer = (state = initialState, action) => {
       };
     //------------------------------SEARCH VIA BACKEND
     case types.SEARCH_FLIGHT:
+      // const { foundFlight } = action.payload;
       return {
         ...state,
-        flights: action.payload,
+        foundFlights: action.payload,
         loading: false,
       };
     default:
