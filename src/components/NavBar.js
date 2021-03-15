@@ -32,7 +32,7 @@ const NavBar = () => {
         />
       </Logo>
 
-      <h3>Pringles Travel and Torism</h3>
+      <h3>Pringles Travel and Tourism Services</h3>
 
       <div className="navbar-nav ml-auto">
         {user ? (

@@ -1,52 +1,42 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { MdFlightTakeoff } from "react-icons/md";
-
-import {
-  SearchButton,
-  SearchFlight,
-  SearchBox,
-} from "../../styles";
+import { searchFlights } from "../../store/actions/flightActions";
+import { SearchButton, SearchFlight, SearchBox } from "../../styles";
 
 const FlightSearch = () => {
   const dispatch = useDispatch();
-  const { flightId, airlineId } = useParams();
-  const foundFlight = useSelector((state) =>
-    state.flightReducer.flights.find((flight) => flight.id === +flightId)
-  );
 
-  const [flight, setFlight] = useState(
-    foundFlight ?? {
-      airlineId: airlineId,
-      originId: "",
-      destinationId: "",
-      departureDate: "",
-      arrivalDate: "",
-      departureTime: "",
-      arrivalTime: "",
-      class :"",
-      seats: 0,
-      
-    }
-  );
+  let [flight, setFlight] = useState({
+    originId: "",
+    destinationId: "",
+    departureDate: "",
+    arrivalDate: "",
+    seats: "",
+    class: "",
+  });
 
   const origin = useSelector((state) => state.locationReducer.origins);
-  const destination = useSelector(
-    (state) => state.locationReducer.destinations
-  );
 
-  const handleChange = (event) =>
-    setFlight({ ...flight, [event.target.name]: event.target.value });
   const originList = origin.map((origin) => (
     <option value={`${origin.id}`}>{origin.airportName}</option>
   ));
 
+  const destination = useSelector(
+    (state) => state.locationReducer.destinations
+  );
   const destinationList = destination.map((destination) => (
     <option value={`${destination.id}`}>{destination.airportName}</option>
   ));
+  const handleChange = (event) =>
+    setFlight({ ...flight, [event.target.name]: event.target.value });
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(searchFlights(flight));
+  };
+  console.log(flight);
   return (
     <div className="row">
       <div className="col-md-12">
@@ -57,32 +47,29 @@ const FlightSearch = () => {
                 <MdFlightTakeoff /> Find Your Perfect Trip{" "}
               </li>
             </ul>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="row">
-                <div className="col-md-1">
+                <div className="col-md-2">
                   <input
                     type="radio"
-                    id="oneWay"
                     name="trip"
-                    value="one Way"
-                    className="btn btn-danger"
+                    value="oneway"
+                    className="form-check-input"
+                    onChange={handleChange}
                   />
-                   <label>One way</label>
-
+                  <label className="form-check-label">One way</label>
                 </div>
-                <div className="col-md-1">
+                <div className="col-md-2">
                   <input
                     type="radio"
-                    id="roundTrip"
                     name="trip"
-                    value="round Trip"
-                    className="btn btn-secondary"
+                    value="roundTrip"
+                    className="form-check-input"
+                    onChange={handleChange}
                   />
-                <label>Round Trip</label>
-
+                  <label className="form-check-label">Round Trip</label>
                 </div>
               </div>
-
               <div className="row">
                 <div className="col-md-6">
                   <div className="form-group form-group-lg form-group-icon-left">
@@ -95,11 +82,13 @@ const FlightSearch = () => {
                       onChange={handleChange}
                       value={flight.originId}
                     >
-                      <option value="">airportName</option>
+                      <option value="">Choose Origin</option>
                       {originList}
                     </select>
                   </div>
                 </div>
+              </div>
+              <div className="row">
                 <div className="col-md-6">
                   <div className="form-group form-group-lg form-group-icon-left">
                     <i className="fa fa-map-marker input-icon"></i>
@@ -111,65 +100,80 @@ const FlightSearch = () => {
                       onChange={handleChange}
                       value={flight.destinationId}
                     >
-                      <option value="">airportName</option>
+                      <option value="">Choose Destination</option>
                       {destinationList}
                     </select>
                   </div>
                 </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="form-group form-group-lg">
-                      <label>Departure</label>
-                      <input
-                        type="date"
-                        value={flight.departureDate}
-                        onChange={handleChange}
-                        name="departureDate"
-                        className="form-control"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group form-group-lg">
-                      <label>Return</label>
-                      <input
-                        type="date"
-                        value={flight.arrivalDate}
-                        onChange={handleChange}
-                        name="arrivalDate"
-                        className="form-control"
-                      />
-                    </div>
+              </div>{" "}
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="form-group form-group-lg">
+                    <label>Departure</label>
+                    <input
+                      type="date"
+                      value={flight.departureDate}
+                      onChange={handleChange}
+                      name="departureDate"
+                      className="form-control"
+                    />
                   </div>
                 </div>
-                <div className="row">
-                <div className="col-md-4">
-                    <div className="form-group form-group-lg">
-                    <input type="radio" id="economy" name="class" value="economy"/>
-                    <label> Economy Class</label>
-                    </div>
-                    </div> 
-                    <div className="col-md-4"> 
-                     <div className="form-group form-group-lg">
-                <input type="radio" id="bussines" name="class" value="bussines"/>
-                <label for="female"> Bussines Class</label>
-                   </div>
-                    </div>
-        
-                        <div className="col-md-3">
-                    <div className="form-group form-group-lg">
-                        <label>Number of Passengers</label>
-                        <input
-                        type="number"
-                        value={flight.seats}
-                        onChange={handleChange}
-                        name="Seats"
-                        className="form-control"
-                       />
-                    </div>
-                    </div>
-                    </div>
-                    </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="form-group form-group-lg">
+                    <label>Return</label>
+                    <input
+                      type="date"
+                      value={flight.arrivalDate}
+                      onChange={handleChange}
+                      name="arrivalDate"
+                      className="form-control"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-2">
+                  <div className="form-group form-group-lg">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="class"
+                      value="economySeats"
+                      onChange={handleChange}
+                    />
+                    <label className="form-check-label"> Economy Class</label>
+                  </div>
+                </div>
+                <div className="col-md-2">
+                  <div className="form-group form-group-lg">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="class"
+                      value="businessSeats"
+                      onChange={handleChange}
+                    />
+                    <label className="form-check-label">Business Class</label>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-3">
+                  <div className="form-group form-group-lg">
+                    <label>Number of Passengers</label>
+                    <input
+                      type="number"
+                      value={flight.seats} // direct through if statement
+                      onChange={handleChange}
+                      name="seats"
+                      className="form-control"
+                    />
+                  </div>
+                </div>
+              </div>
               <SearchButton className="btn btn-lg" type="button">
                 Search for Flights
               </SearchButton>

@@ -24,7 +24,10 @@ export const fetchFlights = () => async (dispatch) => {
 export const addFlight = (newFlight) => async (dispatch) => {
   try {
     console.log(newFlight);
-    const res = await instance.post(`/airlines/${newFlight.airlineId}/flights`, newFlight);
+    const res = await instance.post(
+      `/airlines/${newFlight.airlineId}/flights`,
+      newFlight
+    );
     console.log(res);
     dispatch({
       type: types.ADD_FLIGHT,
@@ -45,6 +48,18 @@ export const updateFlight = (updatedFlight) => async (dispatch) => {
     dispatch({
       type: types.UPDATE_FLIGHT,
       payload: { updatedFlight: res.data },
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+//------------------------------SEARCH
+export const searchFlights = () => async (dispatch) => {
+  try {
+    const res = await instance.get("/flights/search");
+    dispatch({
+      type: types.SEARCH_FLIGHT,
+      payload: res.data,
     });
   } catch (err) {
     console.error(err);

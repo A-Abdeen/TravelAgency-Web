@@ -9,8 +9,8 @@ const Home = () => {
 
   return (
     <div>
-      <Description>Discover the Incredible Places around the Global</Description>
-      <FlightSearch/>
+      <Description>Discover Incredible Places Around the Globe</Description>
+      <FlightSearch />
     </div>
   );
 };
