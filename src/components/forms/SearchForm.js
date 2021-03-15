@@ -4,9 +4,11 @@ import { useState } from "react";
 import { MdFlightTakeoff } from "react-icons/md";
 import { searchFlights } from "../../store/actions/flightActions";
 import { SearchButton, SearchFlight, SearchBox } from "../../styles";
+import { useHistory } from "react-router-dom";
 
 const FlightSearch = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   let [flight, setFlight] = useState({
     originId: "",
@@ -36,7 +38,8 @@ const FlightSearch = () => {
     event.preventDefault();
     dispatch(searchFlights(flight));
   };
-  console.log(flight);
+
+  
   return (
     <div className="row">
       <div className="col-md-12">
@@ -174,7 +177,7 @@ const FlightSearch = () => {
                   </div>
                 </div>
               </div>
-              <SearchButton className="btn btn-lg" type="button">
+              <SearchButton className="btn btn-lg" type="submit" >
                 Search for Flights
               </SearchButton>
             </form>

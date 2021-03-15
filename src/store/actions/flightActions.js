@@ -7,13 +7,11 @@ import * as types from "./types";
 //------------------------------FETCHING FROM BACKEND
 export const fetchFlights = () => async (dispatch) => {
   try {
-    console.log("hello");
     const res = await instance.get("/flights");
     dispatch({
       type: types.FETCH_FLIGHT,
       payload: res.data,
     });
-    console.log("helloo");
   } catch (err) {
     console.error(err);
   }
@@ -23,12 +21,10 @@ export const fetchFlights = () => async (dispatch) => {
 
 export const addFlight = (newFlight) => async (dispatch) => {
   try {
-    console.log(newFlight);
     const res = await instance.post(
       `/airlines/${newFlight.airlineId}/flights`,
       newFlight
     );
-    console.log(res);
     dispatch({
       type: types.ADD_FLIGHT,
       payload: { newFlight: res.data },
@@ -54,13 +50,15 @@ export const updateFlight = (updatedFlight) => async (dispatch) => {
   }
 };
 //------------------------------SEARCH
-export const searchFlights = () => async (dispatch) => {
+export const searchFlights = (flight) => async (dispatch) => {
   try {
-    const res = await instance.get("/flights/search");
+    console.log("hello",flight);
+    const res = await instance.post("/flights/search",flight);
     dispatch({
       type: types.SEARCH_FLIGHT,
-      payload: res.data,
+      payload: {flight: res.data},
     });
+    console.log(flight);
   } catch (err) {
     console.error(err);
   }
