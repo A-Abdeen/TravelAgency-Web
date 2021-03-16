@@ -4,11 +4,9 @@ import { useState } from "react";
 import { MdFlightTakeoff } from "react-icons/md";
 import { searchFlights } from "../../store/actions/flightActions";
 import { SearchButton, SearchFlight, SearchBox } from "../../styles";
-import { useHistory } from "react-router-dom";
 
 const FlightSearch = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   let [flight, setFlight] = useState({
     originId: "",
@@ -39,7 +37,7 @@ const FlightSearch = () => {
     dispatch(searchFlights(flight));
   };
 
-  
+  // Add condition to show return date only on roundtrips radiobutton
   return (
     <div className="row">
       <div className="col-md-12">
@@ -169,7 +167,7 @@ const FlightSearch = () => {
                     <label>Number of Passengers</label>
                     <input
                       type="number"
-                      value={flight.seats} // direct through if statement
+                      value={flight.seats}
                       onChange={handleChange}
                       name="seats"
                       className="form-control"
@@ -177,7 +175,7 @@ const FlightSearch = () => {
                   </div>
                 </div>
               </div>
-              <SearchButton className="btn btn-lg" type="submit" >
+              <SearchButton className="btn btn-lg" type="submit">
                 Search for Flights
               </SearchButton>
             </form>

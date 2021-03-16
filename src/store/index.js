@@ -15,7 +15,7 @@ const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(thunk))
 );
-
+// ADD BOOKING
 store.dispatch(fetchFlights());
 store.dispatch(checkForToken());
 store.dispatch(fetchAirlines());

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 
+// TO BE ORGANIZED ALPHABETICALLY AFTER PROJECT DEADLINE
+// ALSO REMOVE UNUSED
 export const NavStyled = styled.nav`
   background-color: #ecf0f1;
   color: gray;

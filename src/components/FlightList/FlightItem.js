@@ -1,10 +1,7 @@
-//React
 import React from "react";
-//Styling
-import { FlightCard, Table } from "../../styles";
-//Components
 import UpdateButton from "../buttons/UpdateButton";
-
+import { FlightCard, Table } from "../../styles";
+// Change from and to , make them display airport name instead of id
 const FlightItem = ({ flight }) => {
   return (
     <FlightCard className="card w-75">
@@ -17,12 +14,10 @@ const FlightItem = ({ flight }) => {
           <tr>
             DepartureDate:
             <td>
-              {" "}
               {flight.departureDate}, {flight.departureTime}
             </td>
             ArrivalDate:
             <td>
-              {" "}
               {flight.arrivalDate}, {flight.arrivalTime}
             </td>
           </tr>

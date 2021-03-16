@@ -2,7 +2,7 @@ import { useState } from "react";
 import { signup } from "../../store/actions/authActions";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import {AuthForm} from "../../styles";
+import { AuthForm } from "../../styles";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -19,11 +19,6 @@ const Signup = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(signup(user, history));
-    return (
-      <div class="alert alert-primary" role="alert">
-        This is a primary alert—check it out!
-      </div>
-    );
   };
 
   return (

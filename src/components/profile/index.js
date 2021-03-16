@@ -20,7 +20,7 @@ const Profile = () => {
   const handleSubmit = () => {
     dispatch(updateUser(user));
 
-    history.replace("/"); //MUST AUTO RELOAD
+    history.replace("/"); // Review package used and fix autoupdate on submit
   };
 
   return (

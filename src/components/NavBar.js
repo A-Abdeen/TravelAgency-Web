@@ -1,10 +1,7 @@
-//React
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { GoSignOut } from "react-icons/go";
-//Components
 import { signout } from "../store/actions/authActions";
-//Styling
 import {
   AuthButtonStyled,
   UsernameStyled,

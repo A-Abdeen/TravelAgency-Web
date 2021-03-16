@@ -1,7 +1,5 @@
-// React-Router
 import { Route, Switch } from "react-router";
 import { useSelector } from "react-redux";
-// Components
 import Home from "./Home";
 import Signup from "./authentications/Signup";
 import Signin from "./authentications/Signin";
@@ -12,16 +10,14 @@ import Profile from "./profile";
 import Booking from "./forms/Booking";
 import UpdateProfile from "./profile/index";
 
-
-
 const Routes = () => {
   const flights = useSelector((state) => state.flightReducer.flights);
-  const user = useSelector((state) => state.authReducer.user);
+  const user = useSelector((state) => state.authReducer.user); // check if it breaks anything then delete
 
   return (
     <Switch>
       <Route path="/booking">
-        <Booking/>
+        <Booking />
       </Route>
       <Route path="/profile/">
         <Profile />

@@ -3,6 +3,8 @@ import SearchItem from "./SearchItem";
 import { useSelector } from "react-redux";
 import Loading from "../Loading";
 
+// Add condition if no flights found, alert user with message
+
 const SearchList = ({ flights }) => {
   const loading = useSelector((state) => state.flightReducer.loading);
   if (loading) return <Loading />;
