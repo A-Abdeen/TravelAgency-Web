@@ -52,13 +52,14 @@ export const updateFlight = (updatedFlight) => async (dispatch) => {
 //------------------------------SEARCH
 export const searchFlights = (flight) => async (dispatch) => {
   try {
-    console.log("hello",flight);
-    const res = await instance.post("/flights/search",flight);
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%% FLIGHT", flight);
+    const res = await instance.post("/flights/search", flight);
     dispatch({
       type: types.SEARCH_FLIGHT,
-      payload: {flight: res.data},
+      payload: { flight: res.data },
     });
-    console.log(flight);
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%% RESPONSE DATA", res.data);
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%% FLIGHT 2", flight);
   } catch (err) {
     console.error(err);
   }
