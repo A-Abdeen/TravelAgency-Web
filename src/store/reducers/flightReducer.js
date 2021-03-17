@@ -7,14 +7,13 @@ const initialState = {
 
 const flightReducer = (state = initialState, action) => {
   switch (action.type) {
-    //------------------------------FETCHING FROM BACKEND
     case types.FETCH_FLIGHT:
       return {
         ...state,
         flights: action.payload,
         loading: false,
       };
-    //------------------------------ADDING
+
     case types.ADD_FLIGHT:
       const { newFlight } = action.payload;
 
@@ -23,7 +22,6 @@ const flightReducer = (state = initialState, action) => {
         flights: [...state.flights, newFlight],
       };
 
-    //------------------------------UPDATING
     case types.UPDATE_FLIGHT:
       const { updatedFlight } = action.payload;
       return {
@@ -32,7 +30,7 @@ const flightReducer = (state = initialState, action) => {
           flight.id === updatedFlight.id ? updatedFlight : flight
         ),
       };
-    //------------------------------SEARCH VIA BACKEND
+
     case types.SEARCH_FLIGHT:
       return {
         ...state,

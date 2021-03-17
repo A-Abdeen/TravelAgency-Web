@@ -1,10 +1,6 @@
 import instance from "./instance";
-
-// ACTION TYPES
 import * as types from "./types";
-// ACTIONS
 
-//------------------------------FETCHING FROM BACKEND
 export const fetchFlights = () => async (dispatch) => {
   try {
     const res = await instance.get("/flights");
@@ -16,8 +12,6 @@ export const fetchFlights = () => async (dispatch) => {
     console.error(err);
   }
 };
-
-//------------------------------ADDING
 
 export const addFlight = (newFlight) => async (dispatch) => {
   try {
@@ -34,7 +28,6 @@ export const addFlight = (newFlight) => async (dispatch) => {
   }
 };
 
-//------------------------------UPDATING
 export const updateFlight = (updatedFlight) => async (dispatch) => {
   try {
     const res = await instance.put(
@@ -49,17 +42,14 @@ export const updateFlight = (updatedFlight) => async (dispatch) => {
     console.error(err);
   }
 };
-//------------------------------SEARCH
+// Is this the flights.flight problem in searchList index?
 export const searchFlights = (flight) => async (dispatch) => {
   try {
-    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%% FLIGHT", flight);
     const res = await instance.post("/flights/search", flight);
     dispatch({
       type: types.SEARCH_FLIGHT,
       payload: { flight: res.data },
     });
-    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%% RESPONSE DATA", res.data);
-    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%% FLIGHT 2", flight);
   } catch (err) {
     console.error(err);
   }

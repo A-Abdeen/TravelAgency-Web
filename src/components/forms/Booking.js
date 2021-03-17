@@ -1,21 +1,17 @@
-//React
-import { useState } from "react";
+// WIP
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-
-import React from "react";
+import ContactForm from "./ContactForm";
+import PassengerForm from "./PassengerForm";
+import { FormTitle } from "../../styles";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-//Styling
-import { FormTitle } from "../../styles";
-import ContactForm from "./CotactForm";
-import PassengerForm from "./PassengerForm";
 
-//Components
 // import { bookFlight } from "../../store/actions/flightActions";
 
 function TabPanel(props) {

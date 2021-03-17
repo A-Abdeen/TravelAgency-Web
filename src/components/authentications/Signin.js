@@ -19,8 +19,8 @@ const Signin = () => {
     event.preventDefault();
     dispatch(signin(user, history));
   };
-
-  const [show, setShow] = useState("password");
+  // Add unmask password for both sign in and sign up
+  // const [show, setShow] = useState("password");
 
   return (
     <AuthForm className="col-md-6">
@@ -43,12 +43,10 @@ const Signin = () => {
             required
             name="password"
             value={user.password}
-            type={show}
+            // type={show}
             className="form-control"
             onChange={handleChange}
           />
-          {/* <input type="password" value="FakePSW" id="myInput" /> */}
-          {/* <input type="checkbox" onclick="myFunction()" /> */}
         </div>
         <button className="btn float-right" type="submit">
           Sign in

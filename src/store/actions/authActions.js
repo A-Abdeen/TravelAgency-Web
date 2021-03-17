@@ -10,7 +10,7 @@ const setUser = (token) => {
     payload: decode(token),
   };
 };
-
+// if changing backend for redundency, change newUser prop
 export const signup = (newUser, history) => {
   return async (dispatch) => {
     try {
@@ -71,7 +71,6 @@ export const fetchProfile = () => async (dispatch) => {
 
 export const updateUser = (updatedProfile) => async (dispatch) => {
   try {
-    console.log("Helloo");
     const res = await instance.put("/userUpdate", updatedProfile);
     dispatch(setUser(res.data[1]), {
       type: types.SET_USER,

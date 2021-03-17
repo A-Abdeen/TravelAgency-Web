@@ -1,19 +1,13 @@
-//React
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-
-//Styling
 import { Form, FormTitle, AddFlight } from "../../styles";
-
-//Components
 import { addFlight, updateFlight } from "../../store/actions/flightActions";
 
 const FlightForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { flightId, airlineId } = useParams();
-  console.log(flightId);
   const foundFlight = useSelector((state) =>
     state.flightReducer.flights.find((flight) => flight.id === +flightId)
   );
