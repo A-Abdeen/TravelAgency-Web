@@ -81,15 +81,15 @@ export default function Booking({ flight }) {
           aria-label="Vertical tabs example"
           className={classes.tabs}
         >
-          <Tab label="Contact info" {...a11yProps(0)} />
-          <Tab label="Passenger info" {...a11yProps(1)} />
+          <Tab label="Passenger info" {...a11yProps(0)} />
+          <Tab label="Contact info" {...a11yProps(1)} />
         </Tabs>
 
         <TabPanel value={value} index={0}>
-          <ContactForm flightId={flightId} />
+          <PassengerForm />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <PassengerForm />
+          <ContactForm flightId={[flightId]} />
         </TabPanel>
       </div>
     </div>
