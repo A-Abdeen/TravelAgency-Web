@@ -13,3 +13,12 @@ export const SET_USER = "SET_USER";
 // Location Types
 export const FETCH_ORIGIN = "FETCH_ORIGIN";
 export const FETCH_DESTINATION = "FETCH_DESTINATION";
+
+//Booking Types
+export const FETCH_BOOK = "FETCH_BOOK";
+export const ADD_BOOK = "ADD_BOOK";
+
+// Passenger Types
+export const ADD_PASSENGER = "ADD_PASSENGER";
+
+

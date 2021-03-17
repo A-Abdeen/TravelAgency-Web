@@ -6,9 +6,9 @@ import Loading from "./Loading";
 import { useState } from "react";
 
 const Home = () => {
-  const loading = useSelector((state) => state.flightReducer.loading);
+  // const loading = useSelector((state) => state.flightReducer.loading);
   const foundFlights = useSelector((state) => state.flightReducer.foundFlights);
-  if (loading) return <Loading />;
+  // if (loading) return <Loading />;
   // if (foundFlights) return
 
   console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%% PAYLOAD", foundFlights);

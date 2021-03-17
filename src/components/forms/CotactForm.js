@@ -1,38 +1,55 @@
 //React
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 //Styling
 import { BForm, FormTitle, AddFlight } from "../../styles";
 
-//Components
-// import { bookingFlight } from "../../store/actions/flightActions";
+import { addBooking } from "../../store/actions/bookingActions";
 
 const ContactForm = () => {
+  const dispatch = useDispatch();
   const [booking, setBooking] = useState(
-     {
+    {
+        flightIds:[
+          {
+          flightId:1,
+          passenger:2
+  
+              },
+      {
+          flightId:2,
+          passenger:2
+  
+      }
+      ],
       email: "",
       countryCode: "",
       phone: "",
     }
   );
 
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//       dispatch(bookFlight(flight));
-//       history.push("");
-//     };
+  const handleChange = (event) =>
+  setBooking({ ...booking, [event.target.name]: event.target.value });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+      dispatch(addBooking(booking));
+  };
+  
+  console.log("contactBoooking",booking);
 
   return (
     <div>
-      <BForm>
+      <BForm onSubmit={handleSubmit}>
     <div className="row">
     <div className="col-md-6">
         <label className="form-label">Email</label>
         <input
           type="email"
           name="email"
-          className="form-control"
+            className="form-control"
+            onChange={handleChange}
         />
         </div>
         </div>
@@ -43,6 +60,7 @@ const ContactForm = () => {
               id="code"
               name="code"
               className="form-control"
+              onChange={handleChange}
             >
               <option value="">code</option>
             </select>
@@ -52,14 +70,16 @@ const ContactForm = () => {
         <input
           type="text"
           name="phone"
-          className="form-control"
+              className="form-control"
+              onChange={handleChange}
         />
       </div>
       </div>
 
         <AddFlight type="submit" className="btn btn float-right">
-          Continue
+            Continue
         </AddFlight>
+  
       </BForm>
     </div>
   );
