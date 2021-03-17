@@ -1,13 +1,19 @@
 import React from "react";
 import UpdateButton from "../buttons/UpdateButton";
 import { FlightCard, Table } from "../../styles";
+import { useSelector } from "react-redux";
+
 // Change from and to , make them display airport name instead of id
 const FlightItem = ({ flight }) => {
-  // const origin = useSelector((state) => state.locationReducer.origins);
-  // const destination = useSelector((state) => state.locationReducer.destinations);
+  const origin = useSelector((state) => state.locationReducer.origins);
+  const destination = useSelector(
+    (state) => state.locationReducer.destinations
+  );
 
-  // const foundOrigin = origin.find((origin) => origin.id === flight.originId);
-  // const foundDestination = destination.find((destination) => destination.id === flight.destinationId);
+  const foundOrigin = origin.find((origin) => origin.id === flight.originId);
+  const foundDestination = destination.find(
+    (destination) => destination.id === flight.destinationId
+  );
 
   // console.log(foundOrigin);
   // console.log(origin);
@@ -16,8 +22,8 @@ const FlightItem = ({ flight }) => {
       <div class="card-body">
         <Table>
           <tr>
-            From:<td>{flight.originId}</td>
-            To:<td>{flight.destinationId}</td>
+            From:<td>{foundOrigin.airportName}</td>
+            To:<td>{foundDestination.airportName}</td>
           </tr>
           <tr>
             DepartureDate:
