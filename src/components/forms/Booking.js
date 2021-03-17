@@ -1,27 +1,21 @@
-//React
-import { useState } from "react";
+// WIP
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-//Styling
-import {FormTitle} from "../../styles";
-import ContactForm from "./CotactForm";
+import ContactForm from "./ContactForm";
 import PassengerForm from "./PassengerForm";
+import { FormTitle } from "../../styles";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
-//Components
 // import { bookFlight } from "../../store/actions/flightActions";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
-
 
   return (
     <div
@@ -49,7 +43,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
+    "aria-controls": `vertical-tabpanel-${index}`,
   };
 }
 
@@ -57,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
-    display: 'flex',
+    display: "flex",
     height: 224,
   },
   tabs: {
@@ -66,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Booking({flight}) {
+export default function Booking({ flight }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -76,27 +70,27 @@ export default function Booking({flight}) {
 
   return (
     <div>
-    <FormTitle>Booking Details</FormTitle>
-    <div className={classes.root}>
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        className={classes.tabs}
-      >
-        <Tab label="Contact info" {...a11yProps(0)} />
-        <Tab label="Passenger info" {...a11yProps(1)} />
-      </Tabs>
+      <FormTitle>Booking Details</FormTitle>
+      <div className={classes.root}>
+        <Tabs
+          orientation="vertical"
+          variant="scrollable"
+          value={value}
+          onChange={handleChange}
+          aria-label="Vertical tabs example"
+          className={classes.tabs}
+        >
+          <Tab label="Contact info" {...a11yProps(0)} />
+          <Tab label="Passenger info" {...a11yProps(1)} />
+        </Tabs>
 
-      <TabPanel value={value} index={0}>
-        <ContactForm flight={flight}/>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-          <PassengerForm flight={flight}/>
-      </TabPanel>
-    </div>
+        <TabPanel value={value} index={0}>
+          <ContactForm />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <PassengerForm />
+        </TabPanel>
+      </div>
     </div>
   );
 }

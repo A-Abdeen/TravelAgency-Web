@@ -13,14 +13,6 @@ const reducer = (state = initialState, action) => {
         user: action.payload,
         loading: false,
       };
-    // case types.SET_USER:
-    //   const { updatedProfile } = action.payload;
-    //   return {
-    //     ...state,
-    //     users: state.users.map((user) =>
-    //       user.id === updatedProfile.id ? updatedProfile : user
-    //     ),
-    //   };
     default:
       return state;
   }
