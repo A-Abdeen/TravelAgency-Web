@@ -1,13 +1,17 @@
-//WIP
+//React
 import { useState, useMemo } from "react";
 import Select from "react-select";
 import countryList from "react-select-country-list";
+import { useDispatch } from "react-redux";
+import { addPassenger } from "../../store/actions/bookingActions";
+
+//Styling
 import { BForm, AddFlight } from "../../styles";
 
-const PassengerForm = () => {
-  const [booking, setBooking] = useState({
+const PassengerForm = ({ flight }) => {
+  const dispatch = useDispatch();
+  const [passenger, setPassenger] = useState({
     title: "",
-    departureTime: "",
     firstName: "",
     lastName: "",
     gender: "",
@@ -16,6 +20,11 @@ const PassengerForm = () => {
     expiryDate: "",
   });
 
+  const handleChange = (event) =>
+    setPassenger({ ...passenger, [event.target.name]: event.target.value });
+
+  console.log(passenger);
+
   const [value, setValue] = useState("");
   const options = useMemo(() => countryList().getData(), []);
 
@@ -23,13 +32,24 @@ const PassengerForm = () => {
     setValue(value);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(addPassenger(passenger));
+  };
+
   return (
     <div>
-      <BForm>
+      <BForm onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-md-5">
             <label className="form-label">Title</label>
-            <select id="title" name="title" className="form-control">
+            <select
+              id="title"
+              name="title"
+              value={passenger.title}
+              className="form-control"
+              onChange={handleChange}
+            >
               <option value="mr">Mr.</option>
               <option value="ms">Ms.</option>
               <option value="mrs">Mrs.</option>
@@ -42,12 +62,34 @@ const PassengerForm = () => {
             <input type="text" name="firstName" className="form-control" />
           </div>
           <div className="col-md-3">
+            <label className="form-label">FirstName</label>
+            <input
+              value={passenger.firstName}
+              type="text"
+              name="firstName"
+              className="form-control"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-md-3">
             <label className="form-label">LastName</label>
-            <input type="text" name="lastName" className="form-control" />
+            <input
+              value={passenger.lastName}
+              type="text"
+              name="lastName"
+              className="form-control"
+              onChange={handleChange}
+            />
           </div>
           <div className="col-md-5">
             <label className="form-label">Gender</label>
-            <select id="gender" name="gender" className="form-control">
+            <select
+              value={passenger.gender}
+              id="gender"
+              name="gender"
+              className="form-control"
+              onChange={handleChange}
+            >
               <option value="male">Male</option>
               <option value="female">female</option>
             </select>
@@ -65,16 +107,38 @@ const PassengerForm = () => {
             <input type="text" name="passportNum" className="form-control" />
           </div>
           <div className="col-md-3">
+            <label className="form-label">Passpost No.</label>
+            <input
+              value={passenger.passportNum}
+              type="text"
+              name="passportNum"
+              className="form-control"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-md-3">
             <label className="form-label">Country Issue</label>
-            <input type="text" name="countryIssue" className="form-control" />
+            <input
+              value={passenger.countryIssue}
+              type="text"
+              name="countryIssue"
+              className="form-control"
+              onChange={handleChange}
+            />
           </div>
           <div className="col-md-5">
             <label className="form-label">Expiry Date</label>
-            <input type="date" name="expiryDate" className="form-control" />
+            <input
+              value={passenger.expiryDate}
+              type="date"
+              name="expiryDate"
+              className="form-control"
+              onChange={handleChange}
+            />
           </div>
         </div>
         <AddFlight type="submit" className="btn btn float-right">
-          Book
+          Confirm
         </AddFlight>
       </BForm>
     </div>

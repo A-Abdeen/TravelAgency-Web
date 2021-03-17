@@ -8,6 +8,7 @@ import {
   fetchOriginLocation,
   fetchDestinationLocation,
 } from "./actions/locationActions";
+import { fetchBooking } from "./actions/bookingActions";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -23,5 +24,6 @@ store.dispatch(fetchOriginLocation());
 store.dispatch(fetchDestinationLocation());
 store.dispatch(fetchProfile());
 store.dispatch(searchFlights());
+store.dispatch(fetchBooking());
 
 export default store;

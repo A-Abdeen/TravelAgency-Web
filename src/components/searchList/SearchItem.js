@@ -1,8 +1,25 @@
 import React from "react";
-import { FlightCard, Table } from "../../styles";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+//Styling
+import { AddFlight, FlightCard, Table } from "../../styles";
+import Booking from "../forms/Booking";
 
 const SearchItem = ({ flight }) => {
-  // change from and to like the flightlist component (id -> name)
+  <Booking flight={flight} />;
+  // const airline = useSelector((state) => state.airlineReducer.airlines);
+  // let foundAirline = airline.find((airline) => user.id === airline.adminId);
+
+  const origin = useSelector((state) => state.locationReducer.origins);
+  const destination = useSelector(
+    (state) => state.locationReducer.destinations
+  );
+
+  const foundOrigin = origin.find((origin) => origin.id === flight.originId);
+  const foundDestination = destination.find(
+    (destination) => destination.id === flight.destinationId
+  );
+
   return (
     <FlightCard className="card w-75">
       <div class="card-body">
@@ -11,8 +28,8 @@ const SearchItem = ({ flight }) => {
             <td>{flight.airline.name}</td>
           </tr>
           <tr>
-            From:<td>{flight.originId}</td>
-            To:<td>{flight.destinationId}</td>
+            From:<td>{foundOrigin.airportName}</td>
+            To:<td>{foundDestination.airportName}</td>
           </tr>
           <tr>
             DepartureDate:
@@ -36,7 +53,9 @@ const SearchItem = ({ flight }) => {
             </td>
           </tr>
         </Table>
-        <button className="btn btn-lg-danger">Book</button>
+        <Link to="/booking">
+          <AddFlight className="btn btn-lg-danger">Book</AddFlight>
+        </Link>
       </div>
     </FlightCard>
   );

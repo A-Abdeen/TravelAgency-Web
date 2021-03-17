@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Booking() {
+export default function Booking({ flight }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
