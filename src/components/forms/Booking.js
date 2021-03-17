@@ -21,6 +21,8 @@ import PassengerForm from "./PassengerForm";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
+
+
   return (
     <div
       role="tabpanel"
@@ -64,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Booking() {
+export default function Booking({flight}) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -89,10 +91,10 @@ export default function Booking() {
       </Tabs>
 
       <TabPanel value={value} index={0}>
-        <ContactForm/>
+        <ContactForm flight={flight}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <PassengerForm/>
+          <PassengerForm flight={flight}/>
       </TabPanel>
     </div>
     </div>
