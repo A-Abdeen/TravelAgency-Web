@@ -15,26 +15,18 @@ export const fetchBooking = () => async (dispatch) => {
 
 export const addBooking = (booking) => async (dispatch) => {
   try {
-    console.log("?????????????????==Booking Test",booking);
     const res = await instance.post("/bookingCreate", booking);
-    
+
     dispatch({
       type: types.ADD_BOOK,
-      payload: res.data ,
+      payload: res.data,
     });
   } catch (err) {
     console.error(err);
   }
 };
 
-export const addPassenger = (passengers) => async (dispatch) => {
-  try {
-    console.log("$$$$$$$$$$ADD-PASSENGER_ACTION",passengers);    
-    dispatch({
-      type: types.ADD_PASSENGER,
-      payload: passengers,
-    });
-  } catch (err) {
-    console.error(err);
-  }
-};
+export const addPassenger = (passengers) => ({
+  type: types.ADD_PASSENGER,
+  payload: passengers,
+});

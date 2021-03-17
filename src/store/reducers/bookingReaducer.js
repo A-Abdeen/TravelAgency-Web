@@ -16,19 +16,18 @@ const bookingReaducer = (state = initialState, action) => {
       };
     case types.ADD_BOOK:
       const { newBooking } = action.payload;
-  
+      // newBooking.passengers = state.passengers || Maybe for history
       return {
         ...state,
-        booking: [...state.booking, newBooking, ...state.passengers],
+        booking: [...state.booking, newBooking],
+        passengers: [],
+      };
 
-  };
-
-  case types.ADD_PASSENGER:
-
-return {
-  ...state,
-  passengers: action.payload,
-};
+    case types.ADD_PASSENGER:
+      return {
+        ...state,
+        passengers: action.payload,
+      };
 
     default:
       return state;
