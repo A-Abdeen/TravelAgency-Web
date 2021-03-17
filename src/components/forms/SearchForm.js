@@ -8,15 +8,6 @@ import { SearchButton, SearchFlight, SearchBox } from "../../styles";
 const FlightSearch = () => {
   const dispatch = useDispatch();
 
-  let [flight, setFlight] = useState({
-    originId: "",
-    destinationId: "",
-    departureDate: "",
-    arrivalDate: "",
-    seats: "",
-    class: "",
-  });
-
   const origin = useSelector((state) => state.locationReducer.origins);
 
   const originList = origin.map((origin) => (
@@ -29,6 +20,16 @@ const FlightSearch = () => {
   const destinationList = destination.map((destination) => (
     <option value={`${destination.id}`}>{destination.airportName}</option>
   ));
+
+  let [flight, setFlight] = useState({
+    originId: "",
+    destinationId: "",
+    departureDate: "",
+    arrivalDate: "",
+    seats: "",
+    class: "",
+  });
+
   const handleChange = (event) =>
     setFlight({ ...flight, [event.target.name]: event.target.value });
 
