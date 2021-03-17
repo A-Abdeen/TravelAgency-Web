@@ -63,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Booking({ flight }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const { flightId } = useParams();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -85,7 +86,7 @@ export default function Booking({ flight }) {
         </Tabs>
 
         <TabPanel value={value} index={0}>
-          <ContactForm />
+          <ContactForm flightId={flightId} />
         </TabPanel>
         <TabPanel value={value} index={1}>
           <PassengerForm />

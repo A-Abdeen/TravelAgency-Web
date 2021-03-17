@@ -53,7 +53,7 @@ const SearchItem = ({ flight }) => {
             </td>
           </tr>
         </Table>
-        <Link to="/booking">
+        <Link to={`/booking/${flight.id}`}>
           <AddFlight className="btn btn-lg-danger">Book</AddFlight>
         </Link>
       </div>

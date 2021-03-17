@@ -16,7 +16,7 @@ const Routes = () => {
 
   return (
     <Switch>
-      <Route path="/booking">
+      <Route path="/booking/:flightId">
         <Booking />
       </Route>
       <Route path="/profile/">
