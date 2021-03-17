@@ -12,16 +12,14 @@ import Profile from "./profile";
 import Booking from "./forms/Booking";
 import UpdateProfile from "./profile/index";
 
-
-
 const Routes = () => {
   const flights = useSelector((state) => state.flightReducer.flights);
   const user = useSelector((state) => state.authReducer.user);
 
   return (
     <Switch>
-      <Route path="/booking">
-        <Booking/>
+      <Route path="/booking/:flightId">
+        <Booking />
       </Route>
       <Route path="/profile/">
         <Profile />

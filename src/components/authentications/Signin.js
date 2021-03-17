@@ -2,7 +2,7 @@ import { useState } from "react";
 import { signin } from "../../store/actions/authActions";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import {AuthForm} from "../../styles";
+import { AuthForm } from "../../styles";
 
 const Signin = () => {
   const dispatch = useDispatch();
