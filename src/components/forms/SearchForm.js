@@ -22,6 +22,7 @@ const FlightSearch = () => {
   ));
 
   let [flight, setFlight] = useState({
+    type: "",
     originId: "",
     destinationId: "",
     departureDate: "",
@@ -36,6 +37,7 @@ const FlightSearch = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(searchFlights(flight));
+    localStorage.setItem("seats", flight.seats);
   };
 
   // Add condition to show return date only on roundtrips radiobutton
@@ -54,7 +56,7 @@ const FlightSearch = () => {
                 <div className="col-md-2">
                   <input
                     type="radio"
-                    name="trip"
+                    name="type"
                     value="oneway"
                     className="form-check-input"
                     onChange={handleChange}
@@ -64,8 +66,8 @@ const FlightSearch = () => {
                 <div className="col-md-2">
                   <input
                     type="radio"
-                    name="trip"
-                    value="roundTrip"
+                    name="type"
+                    value="roundtrip"
                     className="form-check-input"
                     onChange={handleChange}
                   />
@@ -122,20 +124,22 @@ const FlightSearch = () => {
                   </div>
                 </div>
               </div>
-              <div className="row">
-                <div className="col-md-6">
-                  <div className="form-group form-group-lg">
-                    <label>Return</label>
-                    <input
-                      type="date"
-                      value={flight.arrivalDate}
-                      onChange={handleChange}
-                      name="arrivalDate"
-                      className="form-control"
-                    />
+              {flight.type === "roundtrip" && (
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="form-group form-group-lg">
+                      <label>Return</label>
+                      <input
+                        type="date"
+                        value={flight.arrivalDate}
+                        onChange={handleChange}
+                        name="arrivalDate"
+                        className="form-control"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
               <div className="row">
                 <div className="col-md-2">
                   <div className="form-group form-group-lg">

@@ -40,6 +40,7 @@ const Signin = () => {
         <div className="form-group">
           <label>Password</label>
           <input
+            type="password"
             required
             name="password"
             value={user.password}

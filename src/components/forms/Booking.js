@@ -41,6 +41,12 @@ TabPanel.propTypes = {
 };
 
 function a11yProps(index) {
+  const seats = localStorage.getItem("seats");
+
+  for (let i = 1; i <= seats; i++) {
+    <PassengerForm />;
+  }
+
   return {
     id: `vertical-tab-${index}`,
     "aria-controls": `vertical-tabpanel-${index}`,
@@ -86,8 +92,9 @@ export default function Booking({ flight }) {
         </Tabs>
 
         <TabPanel value={value} index={0}>
-          <PassengerForm />
+          {<PassengerForm />}
         </TabPanel>
+
         <TabPanel value={value} index={1}>
           <ContactForm flightId={[flightId]} />
         </TabPanel>

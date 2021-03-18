@@ -16,6 +16,7 @@ const SearchItem = ({ flight }) => {
   );
 
   const foundOrigin = origin.find((origin) => origin.id === flight.originId);
+
   const foundDestination = destination.find(
     (destination) => destination.id === flight.destinationId
   );
@@ -24,9 +25,7 @@ const SearchItem = ({ flight }) => {
     <FlightCard className="card w-75">
       <div class="card-body">
         <Table>
-          <tr>
-            <td>{flight.airline.name}</td>
-          </tr>
+          <tr></tr>
           <tr>
             From:<td>{foundOrigin.airportName}</td>
             To:<td>{foundDestination.airportName}</td>
@@ -34,19 +33,17 @@ const SearchItem = ({ flight }) => {
           <tr>
             DepartureDate:
             <td>
-              {" "}
               {flight.departureDate}, {flight.departureTime}
             </td>
             ArrivalDate:
             <td>
-              {" "}
               {flight.arrivalDate}, {flight.arrivalTime}
             </td>
           </tr>
           <tr>
             Price:
             <td>
-              BHD{" "}
+              BHD
               {flight.class === "economySeats"
                 ? flight.economyPrice
                 : flight.businessPrice}

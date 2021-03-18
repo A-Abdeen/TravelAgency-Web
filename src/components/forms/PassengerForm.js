@@ -9,6 +9,7 @@ import { BForm, AddFlight } from "../../styles";
 
 const PassengerForm = () => {
   const dispatch = useDispatch();
+
   const [passenger, setPassenger] = useState({
     title: "",
     firstName: "",
