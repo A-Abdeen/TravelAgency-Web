@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BForm, FormTitle, AddFlight } from "../../styles";
 import { addBooking } from "../../store/actions/bookingActions";
+import { useHistory } from "react-router-dom";
 
 //Components
 // import { bookingFlight } from "../../store/actions/flightActions";
@@ -10,6 +11,7 @@ import { addBooking } from "../../store/actions/bookingActions";
 const ContactForm = ({ flightId }) => {
   const dispatch = useDispatch();
   const passengers = useSelector((state) => state.bookingReaducer.passengers);
+  const history = useHistory();
 
   const [booking, setBooking] = useState({
     flightIds: flightId,
@@ -26,6 +28,9 @@ const ContactForm = ({ flightId }) => {
     event.preventDefault();
     const newbooking = { ...booking, passengers: [passengers] };
     dispatch(addBooking(newbooking));
+    history.push("/");
+
+    window.alert("Thank You for your Reservation");
   };
 
   return (
