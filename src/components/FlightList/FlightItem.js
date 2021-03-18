@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 // Change from and to , make them display airport name instead of id
 const FlightItem = ({ flight }) => {
   const origin = useSelector((state) => state.locationReducer.origins);
+
   const destination = useSelector(
     (state) => state.locationReducer.destinations
   );
@@ -15,8 +16,6 @@ const FlightItem = ({ flight }) => {
     (destination) => destination.id === flight.destinationId
   );
 
-  // console.log(foundOrigin);
-  // console.log(origin);
   return (
     <FlightCard className="card w-75">
       <div class="card-body">

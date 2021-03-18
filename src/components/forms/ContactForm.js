@@ -29,7 +29,6 @@ const ContactForm = ({ flightId }) => {
     const newbooking = { ...booking, passengers: [passengers] };
     dispatch(addBooking(newbooking));
     history.push("/");
-
     window.alert("Thank You for your Reservation");
   };
 
